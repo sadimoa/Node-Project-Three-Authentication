@@ -51,6 +51,25 @@ The login endpoint should generate a token you can for the frontend and to authe
 
 In the `middleware` folder, add a method to check if the user is authenticated. Use this method to check if user is logged in when making changes to the bookstore.
 
+#### Use Supabase database
+
+Instead of using SQLite database, change to Supabase by following this instruction:
+
+1. Sign up at supabase.com
+2. Create new project
+3. Inside the project you created, go to `Settings` and then click `Databases`
+4. Under `Connection string`, switch to `url` and copy the link.
+5. Create `.env` file in your project's root directory if you already don't have it.
+6. Add `DATABASE_URL='the url you copied'` in the .env file.
+7. Inside `prisma` folder, you will have `prisma.schema` file, change the `datasource` to
+
+ ```
+ datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+}
+ ```
+
 
 #### Delete what you don't need.
 
